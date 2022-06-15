@@ -1,4 +1,6 @@
-const handler = (req, res) => {
+import prisma from 'lib/prisma';
+
+const handler = async (req, res) => {
   if (req.method !== 'GET') {
     res.status(405).json({
       message: 'Method not allowed',
@@ -6,7 +8,8 @@ const handler = (req, res) => {
     return;
   }
 
-  res.status(200).json({ name: 'API Trips' });
+  const trips = await prisma.trip.findMany();
+  res.status(200).json(trips);
 };
 
 export default handler;
