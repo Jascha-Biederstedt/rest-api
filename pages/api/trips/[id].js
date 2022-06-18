@@ -32,6 +32,13 @@ const handler = async (req, res) => {
   }
 
   if (req.method === 'DELETE') {
+    await prisma.trip.delete({
+      where: {
+        id: parseInt(req.query.id),
+      },
+    });
+
+    return res.status(200).end();
   }
 };
 
