@@ -14,8 +14,7 @@ const handler = async (req, res) => {
       })
     );
 
-    res.status(200).json(trips);
-    return;
+    return res.status(200).json(trips);
   }
 
   if (req.method === 'POST') {
